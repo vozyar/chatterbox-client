@@ -16,7 +16,15 @@ class App {
   }
   renderMessage(message) {
     // console.log("Chats children was: ", $('#chats').children());
-    $('#chats').append('<div>' + message.text +'</div>');
+    $('#chats').append(
+    // '<div class="message">' +
+    '<div>' +
+    '<div class="username" onclick="app.handleUsernameClick()">' + message.username + '</div>' +
+    '<div class="text">' + message.text + '</div>' +
+    '<div class="roomname">' + message.roomname + '</div>' +
+    
+    '</div>'
+    );
 
     // console.log("Chats children is now: ", $('#chats').children());
   }
@@ -27,7 +35,13 @@ class App {
   }
 
   handleUsernameClick() { 
+    $('.username').on('click', function() { 
+      console.log("handleUsernameClick function called.");
+    });
+  }
 
+  handleSubmit() {
+  
   }
 }
 
