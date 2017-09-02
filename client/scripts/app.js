@@ -90,7 +90,42 @@ class App {
   // $('#send .submit').on('submit');
   }
 
+  createNewRoom() {
+    var newRoom = prompt("Name Your new Room: ");
+    $('select').append('<option>' + newRoom + '</option>');
+  }
 
+  filterRooms(url) {
+
+    if (url === undefined){
+      url = 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages';
+    }
+
+    var selectedRoom = $('select')[0].value;
+    
+    console.log("filterRooms function called on room: ", selectedRoom);
+
+    $.ajax({
+      type: 'GET',
+      url: url,
+      success: function(data) {
+        console.log("success call invoked");
+        var container = data.results;
+        console.log("Data: ",data);
+        for (var i = container.length - 1; i >= 0; i--) {
+          //debugger;
+          var currentMessage = container[i];
+          if (currentMessage.roomname === selectedRoom) {
+            console.log("")
+            app.renderMessage(currentMessage);
+          }
+        }
+      }
+
+    });
+
+
+  }
 }
 
 var app = new App();

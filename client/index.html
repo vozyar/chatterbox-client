@@ -32,10 +32,11 @@
       <h1 class="boringClass">chatterbox</h1>
       <p class="boringClass">Choose Room:</p>
       <select>
-        <option>choice1</option>
-        <option>choice2</option>
-        <option>choice3</option>
+        <option>lobby</option>
+        <option>4chan</option>
+        <option>undefined</option>
       </select>
+      <button class="filterRooms" onClick="app.filterRooms()"><-- Show Only This Room</button>
       <br>
         <!-- onsubmit="app.handleSubmit()" -->
         <!-- onClick="app.handleSubmit()" -->
@@ -47,6 +48,7 @@
         <input type="text">
         <button class="clearMessages" onClick ='app.clearMessages()'>CLEAR MESSAGES</button>
         <button class="refresh" onClick ='app.fetch()'>REFRESH PAGE</button>
+        <button class="createNewRoom" onClick="app.createNewRoom()">Create New Room</button>
       <!-- </form> -->
         <!-- <form  class="submit" onClick=""> -->
         <!-- onSubmit refreshes the page -->
