@@ -9,14 +9,22 @@ class App {
     $('#send .submit').on('click', app.handleSubmit);
     // $('.clearMessages').on('click', app.clearMessages);
   }
-  send(message) {
+  send() {
     $.ajax({
       type: 'POST',
       url:  'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
-      data: message});
+      data: message,
+      success: function(message) {
+        app.renderMessage(message);
+      }
+
+    });
       //app.renderMessage();
   }
   fetch(url) {
+    if (url === undefined){
+      url = 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages';
+    }
     $.ajax({
       type: 'GET',
       url: url ,
