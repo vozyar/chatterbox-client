@@ -10,12 +10,19 @@ class App {
     // $('.clearMessages').on('click', app.clearMessages);
   }
   send() {
+
+    var messageToSend = {
+      username: 'Alexander',
+      text: $('input').val(),
+      room: 'lobby'
+    };
+
     $.ajax({
       type: 'POST',
       url:  'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
-      data: message,
+      //data: message,
       success: function(message) {
-        app.renderMessage(message);
+        app.renderMessage(messageToSend);
       }
 
     });
