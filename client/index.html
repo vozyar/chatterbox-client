@@ -7,6 +7,8 @@
 
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="env/config.js"></script>
+
     <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
@@ -19,8 +21,8 @@
       }
     </script>
     <!-- your scripts -->
-    <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
+
   </head>
   <body>
     <div id="main">
@@ -31,11 +33,21 @@
         <option>choice3</option>
       </select>
       <br>
-      <input type="text" name="FirstName">
-      <input type="submit" value="Submit">
-      <!-- Your HTML goes here! -->  
+        <!-- onsubmit="app.handleSubmit()" -->
+        <!-- onClick="app.handleSubmit()" -->
+      <div id="send">
+        <!-- <form  class="submit" onClick=""> -->
+        <!-- onSubmit refreshes the page -->
+          <button onclick="alert('form sumbitted');" >(html content)</button>
+          <input type="text">
+
+        
+        <!-- Your HTML goes here! -->  
+        <!-- </form> -->
+      </div>
+    
       <div id="chats"></div>
-    </div>
+
 
 
   </body>

@@ -8,10 +8,11 @@ class App {
   send(message) {
     $.ajax({type: 'POST', data: message});
   }
-  fetch() {
+  fetch(url) {
     $.ajax({
       type: 'GET',
-      //url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
+      url: url 
+      //'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
     });
   }
   clearMessages() {
@@ -38,13 +39,13 @@ class App {
   }
 
   handleUsernameClick() { 
-    $('.username').on('click', function() { 
-      console.log("handleUsernameClick function called.");
-    });
+    //$('.username').on('click', '',function() { 
+      //console.log("handleUsernameClick function called.");
+    //});
   }
 
   handleSubmit() {
-    
+    console.log("handleSubmit function invoked.");
   
   }
 }
