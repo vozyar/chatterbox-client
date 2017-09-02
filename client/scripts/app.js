@@ -7,9 +7,14 @@ class App {
 
     $('#send .submit').on('submit', app.handleSubmit);
     $('#send .submit').on('click', app.handleSubmit);
+    // $('.clearMessages').on('click', app.clearMessages);
   }
   send(message) {
-    $.ajax({type: 'POST', data: message});
+    $.ajax({
+      type: 'POST',
+      url:  'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
+      data: message});
+      //app.renderMessage();
   }
   fetch(url) {
     $.ajax({
@@ -20,7 +25,7 @@ class App {
         console.log(data);
         //console.log("It's an array? ", Array.isArray(data.results));
         var container = data.results;
-        for (var i = 0; i < container.length; i++) {
+        for (var i = container.length-1; i >= 0; i--) {
           var currentMessage = container[i];
           //console.log("Current Message: " + currentMessage);
           app.renderMessage(currentMessage);
@@ -30,22 +35,28 @@ class App {
     });
   }
   clearMessages() {
+    console.log("clearMessages function called.");
     $('#chats').html('');
   }
   renderMessage(message) {
     // console.log("Chats children was: ", $('#chats').children());
-    $('#chats').append(
-    // '<div class="message">' +
-    '<div class="messages">' +
-    '<div class="username" onclick="app.handleUsernameClick()"> UserName:' + message.username + '</div>' +
-    '<div class="text"> Message: ' + message.text + '</div>' +
-    '<div class="roomname"> Roomname:' + message.roomname + '</div>' +
-    
-    '</div>'
-    );
+    var badUsers = ['anonymous', 'jjjjjjjjjjjjjjjjjjjjjjjjjjjooon', 'anonHackers', 'undefined'];
+    if (badUsers.indexOf(message.username) === - 1) {
+      $('#chats').append(
+      // '<div class="message">' +
+      '<div class="messages">' +
+        '<div class="username" onclick="app.handleUsernameClick()"> UserName:      ' + message.username + '</div>' +
+        '<div class="text"> Message:       ' + message.text + '</div>' +
+        '<div class="roomname"> Roomname:      ' + message.roomname + '</div>' +
+      
+      '</div>'
+      );
+    }
+  }
+
 
     // console.log("Chats children is now: ", $('#chats').children());
-  }
+  
   renderRoom(room) {
     //console.log("RoomSelect children was: ", $('#roomSelect').children());
     $('#roomSelect').append('<div>' + room + '<div>');
@@ -67,7 +78,8 @@ class App {
 }
 
 var app = new App();
-app.fetch('http://parse.sfm6.hackreactor.com/chatterbox/classes/messages')
+app.fetch('http://parse.sfm6.hackreactor.com/chatterbox/classes/messages');
+//$('.clearMessages').on('click', app.clearMessages);
 //app.init();
 //$('#send .submit').on('submit', app.handleSubmit);
 
