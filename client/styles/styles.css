@@ -97,3 +97,7 @@ form input[type=text] {
 .clearMessages {
     background-color: orange;
 }
+
+.boringClass {
+    color: black;
+}

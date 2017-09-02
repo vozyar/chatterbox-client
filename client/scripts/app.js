@@ -12,9 +12,9 @@ class App {
   send() {
 
     var messageToSend = {
-      username: 'Alexander',
+      username: window.location.search.slice(10),
       text: $('input').val(),
-      room: 'lobby'
+      roomname: 'lobby'
     };
 
     $.ajax({
@@ -40,7 +40,8 @@ class App {
         console.log(data);
         //console.log("It's an array? ", Array.isArray(data.results));
         var container = data.results;
-        for (var i = container.length-1; i >= 0; i--) {
+        //for (var i = 0; i < container.length - 1; i++) {
+        for (var i = container.length - 1; i >= 0; i--) {
           var currentMessage = container[i];
           //console.log("Current Message: " + currentMessage);
           app.renderMessage(currentMessage);
