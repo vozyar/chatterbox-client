@@ -1,9 +1,13 @@
 // YOUR CODE HERE:
 class App {
   constructor() {
+
   }
   init() {
-  
+  // a new instance of the App class
+//handlesubmit must be called
+    $('#send .submit').on('submit', app.handleSubmit);
+    $('#send .submit').on('click', app.handleSubmit);
   }
   send(message) {
     $.ajax({type: 'POST', data: message});
@@ -46,8 +50,19 @@ class App {
 
   handleSubmit() {
     console.log("handleSubmit function invoked.");
-  
+  // $('#send .submit').on('submit');
   }
+
+
 }
 
 var app = new App();
+app.init();
+//$('#send .submit').on('submit', app.handleSubmit);
+
+
+
+
+
+
+

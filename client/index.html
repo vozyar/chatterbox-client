@@ -19,6 +19,9 @@
         newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
         window.location.search = newSearch;
       }
+
+
+      
     </script>
     <!-- your scripts -->
     <script src="scripts/app.js"></script>
@@ -35,13 +38,15 @@
       <br>
         <!-- onsubmit="app.handleSubmit()" -->
         <!-- onClick="app.handleSubmit()" -->
-      <div id="send">
+        <!-- onclick="alert('form sumbitted');" -->
+      <div id="send" >
+      <!-- <form class="submit" onsubmit="app.handleSubmit()"> -->
+        <!-- <button>SEND A MESSAGE</button> -->
+        <button class="submit" type="submit" value="Submit">Submit BUTTON</button>
+        <input type="text">
+      <!-- </form> -->
         <!-- <form  class="submit" onClick=""> -->
         <!-- onSubmit refreshes the page -->
-          <button onclick="alert('form sumbitted');" >(html content)</button>
-          <input type="text">
-
-        
         <!-- Your HTML goes here! -->  
         <!-- </form> -->
       </div>
