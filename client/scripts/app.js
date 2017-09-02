@@ -9,7 +9,10 @@ class App {
     $.ajax({type: 'POST', data: message});
   }
   fetch() {
-    $.ajax({type: 'GET'});
+    $.ajax({
+      type: 'GET',
+      //url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
+    });
   }
   clearMessages() {
     $('#chats').html('');
@@ -18,7 +21,7 @@ class App {
     // console.log("Chats children was: ", $('#chats').children());
     $('#chats').append(
     // '<div class="message">' +
-    '<div>' +
+    '<div class="message">' +
     '<div class="username" onclick="app.handleUsernameClick()">' + message.username + '</div>' +
     '<div class="text">' + message.text + '</div>' +
     '<div class="roomname">' + message.roomname + '</div>' +
@@ -41,6 +44,7 @@ class App {
   }
 
   handleSubmit() {
+    
   
   }
 }
