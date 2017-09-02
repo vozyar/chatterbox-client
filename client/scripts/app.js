@@ -4,8 +4,7 @@ class App {
 
   }
   init() {
-  // a new instance of the App class
-//handlesubmit must be called
+
     $('#send .submit').on('submit', app.handleSubmit);
     $('#send .submit').on('click', app.handleSubmit);
   }
@@ -15,7 +14,18 @@ class App {
   fetch(url) {
     $.ajax({
       type: 'GET',
-      url: url 
+      url: url ,
+      success: function(data) {
+        console.log("chatterbox: Message Recived");
+        console.log(data);
+        //console.log("It's an array? ", Array.isArray(data.results));
+        var container = data.results;
+        for (var i = 0; i < container.length; i++) {
+          var currentMessage = container[i];
+          //console.log("Current Message: " + currentMessage);
+          app.renderMessage(currentMessage);
+        }
+      }
       //'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
     });
   }
@@ -26,10 +36,10 @@ class App {
     // console.log("Chats children was: ", $('#chats').children());
     $('#chats').append(
     // '<div class="message">' +
-    '<div class="message">' +
-    '<div class="username" onclick="app.handleUsernameClick()">' + message.username + '</div>' +
-    '<div class="text">' + message.text + '</div>' +
-    '<div class="roomname">' + message.roomname + '</div>' +
+    '<div class="messages">' +
+    '<div class="username" onclick="app.handleUsernameClick()"> UserName:' + message.username + '</div>' +
+    '<div class="text"> Message: ' + message.text + '</div>' +
+    '<div class="roomname"> Roomname:' + message.roomname + '</div>' +
     
     '</div>'
     );
@@ -57,7 +67,8 @@ class App {
 }
 
 var app = new App();
-app.init();
+app.fetch('http://parse.sfm6.hackreactor.com/chatterbox/classes/messages')
+//app.init();
 //$('#send .submit').on('submit', app.handleSubmit);
 
 
